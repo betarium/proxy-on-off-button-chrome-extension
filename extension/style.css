@@ -1,0 +1,31 @@
+body {
+    min-width: 400px;
+    background-color: beige;
+}
+
+#icon {
+    border-width: 0;
+    margin-right: 4px;
+}
+
+section {
+    padding-left: 1em;
+    padding-bottom: 1em;
+}
+
+section div {
+    padding-left: 1em;
+}
+
+label {
+    font-weight: bold;
+}
+
+fieldset {
+    border-style: none;
+}
+
+form #targetHost {
+    width: 40em;
+    height: 4em;
+}

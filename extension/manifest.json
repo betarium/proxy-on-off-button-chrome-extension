@@ -1,0 +1,22 @@
+{
+    "name": "Proxy ON/OFF Button",
+    "description": "Proxy ON/OFF Button for chrome extension.",
+    "version": "0.1",
+    "manifest_version": 3,
+    "author": "betarium",
+    "homepage_url": "https://github.com/betarium/proxy-on-off-button-chrome-extension",
+    "icons": {
+        "16": "icons/icon16.png"
+    },
+    "permissions": [
+        "proxy",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_icon": "icons/icon16.png"
+    },
+    "options_page": "options.html"
+}
