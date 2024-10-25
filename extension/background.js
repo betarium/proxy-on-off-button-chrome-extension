@@ -1,36 +1,20 @@
-async function setProxySettingsFixedServer() {
-    let data = await chrome.storage.sync.get(['proxyHost', 'proxyPort']);
+"use strict";
 
-    if (!data.proxyHost) {
-        throw Error("proxyHost is empty");
+import { } from "./proxy.js";
+
+chrome.runtime.onStartup.addListener(async () => {
+    let data = await getProxySettings();
+
+    if (!data.proxyEnable) {
+        return;
     }
-    else if (!data.proxyPort) {
-        throw Error("proxyPort is empty");
-    }
 
-    let proxyPortNum = parseInt(data.proxyPort);
-
-    let config = {
-        mode: "fixed_servers",
-        rules: {
-            singleProxy: {
-                host: data.proxyHost,
-                port: proxyPortNum
-            },
-        }
-    };
-
-    await chrome.proxy.settings.set({ value: config });
-}
-
-async function clearProxySettings() {
-    await chrome.proxy.settings.clear({ scope: 'regular' });
-}
+    setProxySettingsFixedServer();
+});
 
 chrome.action.onClicked.addListener(async () => {
-    chrome.storage.session.setAccessLevel({ accessLevel: 'TRUSTED_AND_UNTRUSTED_CONTEXTS' });
+    let data = await getProxySettings();
 
-    let data = await chrome.storage.session.get('proxyEnable');
     let proxyEnable = !data.proxyEnable;
 
     if (proxyEnable) {
@@ -40,7 +24,7 @@ chrome.action.onClicked.addListener(async () => {
         await clearProxySettings();
     }
 
-    await chrome.storage.session.set({ "proxyEnable": proxyEnable });
+    await chrome.storage.local.set({ "proxyEnable": proxyEnable });
 });
 
 chrome.tabs.onRemoved.addListener((_tabId, removeInfo) => {

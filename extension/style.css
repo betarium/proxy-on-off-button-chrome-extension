@@ -19,6 +19,8 @@ section div {
 
 label {
     font-weight: bold;
+    display: inline-block;
+    min-width: 50px;
 }
 
 fieldset {

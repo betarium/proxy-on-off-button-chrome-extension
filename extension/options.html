@@ -8,7 +8,32 @@
     <h1><img id="icon" src="icons/icon16.png" />Proxy ON/OFF Button</h1>
     <form>
         <section>
-            <h2>Proxy Config</h2>
+            <h2>Plugin Enable</h2>
+            <div>
+                <fieldset>
+                    <label for="proxyEnable">Enable</label>
+                    <input type="checkbox" id="proxyEnable" />
+                </fieldset>
+            </div>
+        </section>
+        <section>
+            <h2>Proxy Mode</h2>
+            <div>
+                <fieldset>
+                    <label>Mode</label>
+                    <select id="proxyMode">
+                        <option value="disable">Default(Not changed)</option>
+                        <option value="system">System</option>
+                        <option value="direct">Direct</option>
+                        <option value="fixed_servers">Fixed Servers</option>
+                        <option value="auto_detect">Auto Detect</option>
+                        <option value="pac_script">Pac Script</option>
+                    </select>
+                </fieldset>
+            </div>
+        </section>
+        <section>
+            <h2>Fixed Servers Config</h2>
             <div>
                 <fieldset>
                     <label>Host</label>
@@ -18,6 +43,20 @@
                     <label>Port</label>
                     <input id="proxyPort" type="number" />
                 </fieldset>
+            </div>
+        </section>
+        <section>
+            <h2>Pac Script Config</h2>
+            <div>
+                <fieldset>
+                    <label>Pac Script URL</label>
+                    <input id="proxyPacScriptUrl" type="url" />
+                </fieldset>
+            </div>
+        </section>
+        <section>
+            <div>
+                <input id="saveButton" type="button" value="SAVE" />
             </div>
         </section>
         <section>
@@ -37,6 +76,7 @@
 </body>
 
 <link rel="stylesheet" type="text/css" href="style.css" />
+<script src="proxy.js"></script>
 <script src="options.js"></script>
 
 </html>
